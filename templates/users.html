@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Users</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="user-display">
+      <ul>
+        {% for user in user_names %}
+        <li>
+          <a href="/users/{{ user.id }}"
+            >{{ user.first_name }} {{ user.last_name}}</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
+      <form>
+        <button class="user-add-btn" formaction="/users/new" formmethod="GET">
+          Add user
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><title>New Post for {{ user.fullname }}</title></head>
+    </head>
+    <body>
+        <form method="POST">
+            <label for="new_title">Title</label>
+            <input type="text" name="new_title" placeholder="Enter a title">
+            <label for="new_content"></label>
+            <textarea name="new_content" placeholder="Enter content"></textarea>
+            <button formaction="/users/{{ user.id }}/posts/new" >POST</button>
+        </form>
+        
+    </body>
+</html>

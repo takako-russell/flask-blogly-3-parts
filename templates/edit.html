@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Edit Page</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="edit-wrapper">
+      <h2>Edit {{ user.first_name + user.last_name }}</h2>
+      <form method="POST">
+        <label for="edit_first_name">First Name</label>
+        <input
+          type="text"
+          name="edit_first_name"
+          value="{{ user.first_name }}"
+        />
+        <label for="edit_last_name">Last Name</label>
+        <input type="text" name="edit_last_name" value="{{ user.last_name }}" />
+        <label for="edit_imageURL">Image URL</label>
+        <input type="text" name="edit_imageURL" value="{{ user.image_url }}" />
+        <button>Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

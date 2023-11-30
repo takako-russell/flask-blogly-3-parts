@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Users</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="detail-wrapper">
+      <img src="{{ user.image_url }}" />
+      <div>
+        <h3>{{ user.first_name}} {{ user.last_name}}</h3>
+        <form>
+          <button
+            class="detail-btn"
+            formaction="/users/{{ user.id }}/edit"
+            formmethod="GET"
+          >
+            Edit
+          </button>
+          <button
+            class="detail-btn"
+            formaction="/users/{{ user.id }}/delete"
+            formmethod="POST"
+          >
+            Delete
+          </button>
+        </form>
+        <ul>
+          {% for post in user.posts %}
+          <li><a href="/posts/{{ post.id }}">{{ post.title }}</a></li>
+          {% endfor %}
+        </ul>
+        <p><a href="/users/{{ user.id }}/posts/new">Add Post</a></p>
+      </div>
+    </div>
+  </body>
+</html>
