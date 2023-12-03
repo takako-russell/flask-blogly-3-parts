@@ -21,7 +21,12 @@
         <input type="text" name="edit_last_name" value="{{ user.last_name }}" />
         <label for="edit_imageURL">Image URL</label>
         <input type="text" name="edit_imageURL" value="{{ user.image_url }}" />
-        <button>Submit</button>
+        <button class="edit-submit-btn">Submit</button>
+      </form>
+      <form>
+        <button formaction="/users/{{ user.id }}" class="edit-cancel-btn">
+          Cancel
+        </button>
       </form>
     </div>
   </body>

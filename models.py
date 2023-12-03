@@ -20,7 +20,12 @@ class User(db.Model):
     first_name = db.Column(db.Text, nullable=False)
     last_name = db.Column(db.Text, nullable=False)
     image_url = db.Column(db.Text,nullable=False,default=default_img)
-    pst = db.relationship("Post",backref='users')
+    pst = db.relationship("Post",backref='users',cascade="all, delete-orphan")
+
+    @property
+    def fullname(self):
+        """Returns a full name"""
+        return f"{ self.first_name} { self.last_name }"
 
 
 

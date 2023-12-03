@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Recent Posts</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="post-wrapper">
+      {% for post in posts %}
+      <div>
+        <h2>-- {{ post.title }} --</h2>
+        <p>{{ post.content }}</p>
+        <p><i>by {{ post.users.fullname }}</i></p>
+      </div>
+
+      {% endfor %}
+      <form>
+        <button formaction="/users">See users</button>
+      </form>
+    </div>
+  </body>
+</html>

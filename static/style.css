@@ -8,6 +8,7 @@ body {
   justify-content: center;
   height: 100vh;
 }
+
 .detail-wrapper {
   display: flex;
   background-color: rgb(162, 164, 164);
@@ -31,6 +32,13 @@ body {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 80px;
+  background-color: white;
 }
 
 form {
@@ -57,10 +65,32 @@ li {
   margin: 10px;
 }
 
-.user-add-btn {
+/* .form-btn {
   margin-top: 40px;
-}
+} */
 
 .detail-btn {
   margin: 6px;
+}
+
+.edit-cancel-btn {
+  width: 205px;
+  color: rgb(73, 97, 159);
+  border: none;
+  margin-top: 10px;
+}
+
+.edit-submit-btn {
+  background-color: rgb(108, 187, 161);
+  color: #f4f4f4;
+  border: none;
+  margin-top: 40px;
+}
+
+.post-update {
+  display: flex;
+  flex-direction: row;
+}
+.post-update-btn {
+  margin: 5px;
 }

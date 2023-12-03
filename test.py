@@ -1,7 +1,7 @@
 
 from unittest import TestCase
 from app import app
-from models import db, User
+from models import db, User,Post
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///user_test'
@@ -19,7 +19,10 @@ class UserRouteTests(TestCase):
             db.create_all()
 
             user = User(first_name = 'Wabi', last_name = 'Russell', image_url='')
+            # post = Post(title='trip',content='it was amazing')
             db.session.add(user)
+            # db.session.add(post)
+
             db.session.commit()
 
             self.client = app.test_client()
@@ -60,6 +63,59 @@ class UserRouteTests(TestCase):
         user = User.query.get(1)
 
         self.assertIsNone(user)
+
+
+    def test_newpost(self):
+
+        data = {
+            "new_title":"omg",
+            "new_content":"what a day"
+        }
+
+        res = self.client.post("/users/1/posts/new", data=data,follow_redirects=True)
+
+        self.assertEqual(res.status_code, 200)
+        post = Post.query.filter_by(title='omg').first()
+
+        self.assertEqual(post.content,'what a day')
+
+
+    def test_edit_post(self):
+        user_id=1
+        post_id=1
+
+        post = Post(title='trip',content='it was amazing')
+        db.session.add(post) 
+        db.session.commit()
+
+
+        res = self.client.get(f"/users/{user_id}/posts/{post_id}/edit", follow_redirects=True)
+
+        self.assertEqual(res.status_code,200)
+
+
+
+    def test_editpost(self):
+        user_id=1
+        post_id=1
+
+        post = Post(title='trip',content='it was amazing')
+        id = db.session.add(post) 
+        db.session.commit()
+       
+        data ={"edit-title":"yesterday", "edit-content":"it was rainy"}
+
+        res = self.client.post(f"/users/{user_id}/posts/{post_id}/edit", data=data, follow_redirects=True)
+                            #    data=data,follow_redirects=True)
+        self.assertEqual(res.status_code,200)
+
+        post = Post.query.filter_by(title="yesterday").first()
+
+        self.assertEqual(post.content,'it was rainy')
+
+
+
+
 
     
     

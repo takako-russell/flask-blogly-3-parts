@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Edit post</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="form-wrapper">
+      <form>
+        <label for="edit-title">Title</label>
+        <input type="text" name="edit-title" value="{{ post.title }}" />
+        <label for="edit-content">Content</label>
+        <textarea name="edit-content">{{ post.content }}</textarea>
+        <button
+          class="edit-submit-btn"
+          formaction="/users/{{ post.users.id }}/posts/{{ post.id }}/edit"
+          formmethod="POST"
+        >
+          Submit
+        </button>
+        <button formaction="/users/{{ post.users.id }}" class="edit-cancel-btn">
+          Cancel
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

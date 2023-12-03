@@ -9,6 +9,18 @@
       <img src="{{ user.image_url }}" />
       <div>
         <h3>{{ user.first_name}} {{ user.last_name}}</h3>
+        <div class="user_posts">
+          <ul>
+            {% for post in user.pst %}
+            <li>
+              <a href="/users/{{ user.id }}/posts/{{ post.id }}"
+                >{{ post.title }}</a
+              >
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+
         <form>
           <button
             class="detail-btn"
@@ -24,12 +36,9 @@
           >
             Delete
           </button>
+          <button class="detail-btn" formaction="/users">Back</button>
         </form>
-        <ul>
-          {% for post in user.posts %}
-          <li><a href="/posts/{{ post.id }}">{{ post.title }}</a></li>
-          {% endfor %}
-        </ul>
+
         <p><a href="/users/{{ user.id }}/posts/new">Add Post</a></p>
       </div>
     </div>

@@ -6,6 +6,11 @@
   </head>
   <body>
     <div class="user-display">
+      <div>
+        {% with messages = get_flashed_messages() %} {% for msg in messages %}
+        <p>{{ msg }}</p>
+        {% endfor %} {% endwith %}
+      </div>
       <ul>
         {% for user in user_names %}
         <li>
@@ -16,9 +21,12 @@
         {% endfor %}
       </ul>
       <form>
-        <button class="user-add-btn" formaction="/users/new" formmethod="GET">
+        <button class="form-btn" formaction="/users/new" formmethod="GET">
           Add user
         </button>
+      </form>
+      <form>
+        <button class="form-btn" formaction="/">Home</button>
       </form>
     </div>
   </body>
