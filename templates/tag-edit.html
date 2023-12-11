@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body><div class="form-wrapper">
+    <form>
+      <h2>Edit a tag</h2>
+      <label for="edittag"></label>
+      <input type="text" name="edittag" value="{{tag.name}}"/>
+      <div class="create-btn">
+        <button formaction="/tags/{{tag.id}}">Cancel</button>
+        <button formaction="/tags/{{tag.id}}/edit" formmethod="POST">Add</button>
+      </div></body>
+</html>

@@ -6,10 +6,20 @@
     <body>
         <div class="form-wrapper" >
             <form method="POST">
+                <h2>Add a post for {{ user.fullname }}</h2>
                 <label for="new_title">Title</label>
                 <input type="text" name="new_title" placeholder="Enter a title">
                 <label for="new_content"></label>
                 <textarea name="new_content" placeholder="Enter content"></textarea>
+                <b><p>--choose tags--</p></b>
+                <div class="checkbox-wrapper">
+                {% for tag in tags %}
+                <div class="checkbox-choice">
+                <input type="checkbox" name="tag-choice" value="{{ tag.id }}">
+                <label for="tag-choice" >{{tag.name}}</label>
+                </div>
+                {% endfor %}
+            </div>
                 <button class="edit-submit-btn"  formaction="/users/{{ user.id }}/posts/new" >POST</button>
                 
                 </form>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Users</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="post-wrapper">
+      <h2>Tags</h2>
+      <ul>
+        {% for tag in tags %}
+        <a href="/tags/{{ tag.id }}"><li>{{ tag.name }}</li></a>
+        {% endfor %}
+      </ul>
+      <form>
+        <button formaction="/tags/new">Add Tag</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -11,6 +11,25 @@
         <input type="text" name="edit-title" value="{{ post.title }}" />
         <label for="edit-content">Content</label>
         <textarea name="edit-content">{{ post.content }}</textarea>
+        {% for tag in tags %}
+        <div>
+          <input
+            type="checkbox"
+            name="tag-choice"
+            value="{{ tag.id }}"
+            {%
+            if
+            tag
+            in
+            post.tags
+            %}checked{%
+            endif
+            %}
+          />
+          <label for="tag-choice">{{ tag.name }}</label>
+        </div>
+        {% endfor %}
+
         <button
           class="edit-submit-btn"
           formaction="/users/{{ post.users.id }}/posts/{{ post.id }}/edit"

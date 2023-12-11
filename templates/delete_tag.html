@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Users</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <form class="form-wrapper">
+      <p>Are you sure you want to delete <b>{{ tag.name}}</b>?</p>
+      <button formaction="/tags/{{ tag.id }}/delete" formmethod="POST">
+        Delete
+      </button>
+      <button formaction="/tags/{{ tag.id }}">Cancel</button>
+    </form>
+  </body>
+</html>
